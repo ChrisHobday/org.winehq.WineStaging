@@ -4,7 +4,7 @@
   <id>org.winehq.WineStaging</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>LGPL-2.1+</project_license>
-  <name>Wine</name>
+  <name>WineStaging</name>
   <summary>Windows compatibility layer</summary>
 
   <developer id="winehq.org">

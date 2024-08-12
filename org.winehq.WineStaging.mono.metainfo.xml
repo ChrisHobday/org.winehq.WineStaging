@@ -11,4 +11,7 @@
       Mono library required for Wine.
     </p>
   </description>
+  <releases>
+    <release version="9.2.0" date="2024-08-12"/>
+  </releases>
 </component>

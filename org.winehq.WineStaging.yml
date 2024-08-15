@@ -592,3 +592,12 @@ modules:
         path: wine-logo.svg
       - type: file
         path: org.winehq.WineStaging.appdata.xml
+      # Shell script that creates a blank Wine Prefix
+      - type: shell
+        commands:
+          - |
+            echo "Setting USER and WINEPREFIX environment variables"
+            export USER=wineuser
+            export WINEPREFIX=/app/share/wine
+            echo "Creating Wine Prefix at /app/share/wine"
+            wineboot --init

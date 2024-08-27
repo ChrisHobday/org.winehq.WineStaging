@@ -12,6 +12,7 @@
     </p>
   </description>
   <releases>
+    <release version="9.3.0" date="2024-08-27"/>
     <release version="9.2.0" date="2024-08-12"/>
   </releases>
 </component>

@@ -387,8 +387,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/9.x/wine-9.15.tar.xz
-        sha256: 79adef436dd68ddbd70178670a3c23aa98e8afd5540ac0f42345894c458b78dd
+        url: https://dl.winehq.org/wine/source/9.x/wine-9.16.tar.xz
+        sha256: 89042ae8c80b2333f8a7d18877fc4179c07d6357ab7f28ccbda6d06f3c330c50
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
         x-checker-data:
@@ -399,7 +399,7 @@ modules:
           is-main-source: true
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging
-        commit: 92374493ee7d657b198ca9db2f3ef32e3dc27a82
+        commit: 6c5cb54635aa0667bcfc27707d05f3c6eea96088
         dest: wine-staging
       - type: shell
         commands:
@@ -558,9 +558,9 @@ modules:
         --origin=flatpak ${FLATPAK_ID}.mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/9.2.0/wine-mono-9.2.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/9.3.0/wine-mono-9.3.0-x86.tar.xz
         strip-components: 0
-        sha256: 59b35dfe525f32c581884b6c7865496e13b3cd200c5ed267c43fb4663e0cd757
+        sha256: c23deb9e3217a574f242b78d74cb94c4948a37d1f2715941b803a02e535854a6
         x-checker-data:
           type: html
           url: *wine-addons-url

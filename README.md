@@ -1,9 +1,9 @@
 # WineStaging, WineStaging.mono, and WineStaging.gecko Flatpaks
 ## Installing
-- Download WineStaging9.16.flatpak, WineStaging.mono9.3.0.flatpak, and WineStaging.gecko2.47.4.flatpak from releases
-- Install WineStaging9.16.flatpak, WineStaging.mono9.3.0.flatpak, and WineStaging.gecko2.47.4.flatpak (sudo needed for installing single use Flatpak bundle)
+- Download WineStaging9.17.flatpak, WineStaging.mono9.3.0.flatpak, and WineStaging.gecko2.47.4.flatpak from releases
+- Install WineStaging9.17.flatpak, WineStaging.mono9.3.0.flatpak, and WineStaging.gecko2.47.4.flatpak (sudo needed for installing single use Flatpak bundle)
 ```console
-sudo flatpak install WineStaging9.16.flatpak
+sudo flatpak install WineStaging9.17.flatpak
 ```
 ```console
 sudo flatpak install WineStaging.mono9.3.0.flatpak
@@ -49,7 +49,7 @@ flatpak run org.flatpak.Builder --force-clean --repo=repo --user --install build
 ## Building single use Flatpak bundles like in the releases (After having followed the Building steps above)
 - Build the Flatpak bundles (Run this from within the org.winehq.WineStaging directory after having followed the Building steps above)
 ```console
-flatpak build-bundle repo WineStaging9.16.flatpak org.winehq.WineStaging stable-23.08
+flatpak build-bundle repo WineStaging9.17.flatpak org.winehq.WineStaging stable-23.08
 ```
 ```console
 flatpak build-bundle --runtime repo WineStaging.mono9.3.0.flatpak org.winehq.WineStaging.mono stable-23.08

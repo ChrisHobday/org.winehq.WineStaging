@@ -33,9 +33,9 @@ git clone --recurse-submodules https://github.com/ChrisHobday/org.winehq.WineSta
 ```console
 flatpak install flathub org.flatpak.Builder
 ```
-- Install the platform this Flatpak will be using
+- Install the platform/sdk and extensions this Flatpak will be using
 ```console
-flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08
+flatpak install flathub org.freedesktop.Platform//23.08 org.freedesktop.Sdk//23.08 org.freedesktop.Sdk.Compat.i386//23.08 org.freedesktop.Sdk.Extension.toolchain-i386//23.08 org.freedesktop.Sdk.Extension.mingw-w64//23.08
 ```
 - Build the Flatpak with flatpak-builder (Run this from within the org.winehq.WineStaging directory)
 ```console

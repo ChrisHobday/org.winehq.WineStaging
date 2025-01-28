@@ -1,11 +1,11 @@
 id: org.winehq.WineStaging
-default-branch: &app-version stable-23.08
-x-extension-versions: &extension-versions stable;stable-23.08
+default-branch: &app-version stable-24.08
+x-extension-versions: &extension-versions stable;stable-24.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '23.08'
+runtime-version: &runtime-version '24.08'
 x-gl-version: &gl-version '1.4'
-x-gl-versions: &gl-versions 23.08;1.4
+x-gl-versions: &gl-versions 24.08;1.4
 x-gl-merge-dirs: &gl-merge-dirs vulkan/icd.d;glvnd/egl_vendor.d;egl/egl_external_platform.d;OpenCL/vendors;lib/dri;lib/d3d;lib/gbm;vulkan/explicit_layer.d;vulkan/implicit_layer.d
 finish-args:
   - --share=ipc
@@ -167,51 +167,6 @@ modules:
         x86_64: *compat_i386_opts
     sources: *libusb-sources
 
-  - name: FAudio
-    buildsystem: cmake-ninja
-    config-opts: &FAudio-config-opts
-      - -DGSTREAMER=ON
-    sources: &FAudio-sources
-      - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/24.10/FAudio-24.10.tar.gz
-        sha256: 9d123c5f20ead7824f718b5840b87b432dbf51a0514214e30c41b4ee32a344e0
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
-          tag-query: .tag_name
-          version-query: $tag | sub("^[vV]"; "")
-          timestamp-query: .published_at
-          url-query: >-
-            "https://github.com/FNA-XNA/FAudio/archive/\($version)/FAudio-\($version).tar.gz"
-
-  - name: FAudio-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    buildsystem: cmake-ninja
-    config-opts: *FAudio-config-opts
-    sources: *FAudio-sources
-
-  - name: vkd3d
-    sources: &vkd3d-sources
-      - type: archive
-        url: https://dl.winehq.org/vkd3d/source/vkd3d-1.9.tar.xz
-        sha256: 9d1ebc6f36cccf40cffda3176851f73a0501b90c4d04e782abe79ca703057a4b
-    modules:
-      - name: spirv-headers
-        buildsystem: cmake-ninja
-        sources:
-          - type: git
-            url: https://github.com/KhronosGroup/SPIRV-Headers.git
-            tag: sdk-1.3.261.1
-            commit: 124a9665e464ef98b8b718d572d5f329311061eb
-
-  - name: vkd3d-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *vkd3d-sources
-
   - name: krb5
     subdir: src
     config-opts: &krb5-config-opts
@@ -265,8 +220,8 @@ modules:
       - /bin
     sources: &openldap-sources
       - type: archive
-        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.1.tgz
-        sha256: 9d576ea6962d7db8a2e2808574e8c257c15aef55f403a1fb5a0faf35de70e6f3
+        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
+        sha256: 2cb7dc73e9c8340dff0d99357fbaa578abf30cc6619f0521972c555681e6b2ff
 
   - name: openldap-32bit
     build-options:
@@ -294,8 +249,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.20.4.tar.gz
-        sha256: 3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5
+        url: https://download.samba.org/pub/samba/stable/samba-4.20.6.tar.gz
+        sha256: 8fe37f9e7817b6583fa55a0a15568b8e6be8875513741312ef805484b102ccf7
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
@@ -320,16 +275,16 @@ modules:
           - '*'
         sources:
           - type: archive
-            url: https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.07.tar.gz
-            sha256: 4f78b929798992e06106cf2bbc20de2375f7b60c60b3aa3ace02aae1e38513bb
+            url: https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/JSON-4.10.tar.gz
+            sha256: df8b5143d9a7de99c47b55f1a170bd1f69f711935c186a6dc0ab56dd05758e35
 
       - name: rpcsvc-proto
         cleanup:
           - '*'
         sources:
           - type: archive
-            url: https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.3.tar.gz
-            sha256: 6906e0f81bb016bd0216460fc879d3d9f2f6d743be7dfb0d8b32d140226d5ef8
+            url: https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.4.tar.gz
+            sha256: 7988641deae8463303b6273d7af98ece09111c385d4c9134a142a5fad3cdfef8
 
   - name: samba-32bit
     build-options:
@@ -349,8 +304,8 @@ modules:
   - name: unixodbc
     sources: &unixodbc-sources
       - type: archive
-        url: http://www.unixodbc.org/unixODBC-2.3.9.tar.gz
-        sha256: 52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207
+        url: http://www.unixodbc.org/unixODBC-2.3.12.tar.gz
+        sha256: f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
     cleanup: &unixodbc-cleanup
       - /bin
 
@@ -377,9 +332,9 @@ modules:
       - --disable-win16
       - --disable-tests
       - --with-x
+      - --with-wayland
       - --with-pulse
       - --with-dbus
-      - --without-hal
       - --without-oss
     make-install-args: &wine-make-install-args
       - LDCONFIG=/bin/true
@@ -387,19 +342,19 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/9.x/wine-9.22.tar.xz
-        sha256: e150d29742aa54f768ef3e976ed861aaa4f9f48542e409bea902d0f49b359683
+        url: https://dl.winehq.org/wine/source/10.0/wine-10.0.tar.xz
+        sha256: c5e0b3f5f7efafb30e9cd4d9c624b85c583171d33549d933cd3402f341ac3601
         x-addons-url: &wine-addons-url >-
-          https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
+          https://gitlab.winehq.org/wine/wine/-/raw/stable/dlls/appwiz.cpl/addons.c
         x-checker-data:
           type: html
-          url: https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/VERSION
+          url: https://gitlab.winehq.org/wine/wine/-/raw/stable/VERSION
           version-pattern: Wine version (\d[\d\w\.-]+\d)
           url-template: https://dl.winehq.org/wine/source/$major.$minor/wine-$version.tar.xz
           is-main-source: true
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging
-        tag: v9.22
+        tag: v10.0
         dest: wine-staging
       - type: shell
         commands:
@@ -442,8 +397,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20240105'
-        commit: bc91718a5cad45e9f33de9b351a5960d5395bed5
+        tag: '20250102'
+        commit: e20b2f6f80d175f96208f51800130db7459dd28c
         x-checker-data:
           type: git
           tag-pattern: ^(\d+)$
@@ -495,8 +450,8 @@ modules:
       - name: cabextract
         sources:
           - type: archive
-            url: https://www.cabextract.org.uk/cabextract-1.9.1.tar.gz
-            sha256: afc253673c8ef316b4d5c29cc4aa8445844bee14afffbe092ee9469405851ca7
+            url: https://www.cabextract.org.uk/cabextract-1.11.tar.gz
+            sha256: b5546db1155e4c718ff3d4b278573604f30dd64c3c5bfd4657cd089b823a3ac6
 
   # Bundled extensions
 
@@ -510,11 +465,6 @@ modules:
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/gecko/share/metainfo/
         ${FLATPAK_ID}.gecko.metainfo.xml
-      - >-
-        appstream-compose
-        --basename=${FLATPAK_ID}.gecko
-        --prefix=${FLATPAK_DEST}/share/wine/gecko
-        --origin=flatpak ${FLATPAK_ID}.gecko
     sources:
       - type: file
         only-arches:
@@ -551,11 +501,6 @@ modules:
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/mono/share/metainfo/
         ${FLATPAK_ID}.mono.metainfo.xml
-      - >-
-        appstream-compose
-        --basename=${FLATPAK_ID}.mono
-        --prefix=${FLATPAK_DEST}/share/wine/mono
-        --origin=flatpak ${FLATPAK_ID}.mono
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.tar.xz

@@ -342,8 +342,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/10.0/wine-10.0.tar.xz
-        sha256: c5e0b3f5f7efafb30e9cd4d9c624b85c583171d33549d933cd3402f341ac3601
+        url: https://dl.winehq.org/wine/source/10.x/wine-10.1.tar.xz
+        sha256: 63471e37b1a515795ff3368d26a039261660e1377cb427d1b61b3a7b76091663
         x-addons-url: &wine-addons-url >-
           https://gitlab.winehq.org/wine/wine/-/raw/stable/dlls/appwiz.cpl/addons.c
         x-checker-data:
@@ -354,7 +354,7 @@ modules:
           is-main-source: true
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging
-        tag: v10.0
+        tag: v10.1
         dest: wine-staging
       - type: shell
         commands:

@@ -381,7 +381,7 @@ modules:
     config-opts: *wine-config-opts
     make-install-args: *wine-make-install-args
     post-install:
-      - mv ${FLATPAK_DEST}/bin32/wine{,-preloader} ${FLATPAK_DEST}/bin/
+      - mv ${FLATPAK_DEST}/lib/wine/x86_64-unix/wine{,-preloader} ${FLATPAK_DEST}/bin/
     sources: *wine-sources
     cleanup:
       - /bin32
